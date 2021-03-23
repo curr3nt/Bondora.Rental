@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bondora.Rental.Domain", "Bondora.Rental.Domain\Bondora.Rental.Domain.csproj", "{E0F19203-EDF8-49AF-9443-BDC6DDABCBBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bondora.Rental.Tests", "Bondora.Rental.Tests\Bondora.Rental.Tests.csproj", "{FF147418-F52B-4C21-84FB-1C8A364949DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E0F19203-EDF8-49AF-9443-BDC6DDABCBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0F19203-EDF8-49AF-9443-BDC6DDABCBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0F19203-EDF8-49AF-9443-BDC6DDABCBBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF147418-F52B-4C21-84FB-1C8A364949DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF147418-F52B-4C21-84FB-1C8A364949DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF147418-F52B-4C21-84FB-1C8A364949DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF147418-F52B-4C21-84FB-1C8A364949DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
