@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EquipmentType.cs" />
+    <Compile Include="Currency.cs" />
+    <Compile Include="Price.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalFees.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
