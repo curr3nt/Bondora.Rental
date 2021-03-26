@@ -29,5 +29,15 @@
         {
             return Currency.Print(Value);
         }
+
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            var p = obj as Price<TCurrency>;
+            return this == obj
+                || p != null && p.Value.Equals(Value) && p.Currency.Equals(Currency);
+        }
     }
 }

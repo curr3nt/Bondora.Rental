@@ -1,5 +1,6 @@
 ﻿namespace Bondora.Rental.Domain
 {
+    // rental prices is just a specific set of Price<T> values
     public class RentalFees<TCurrency> where TCurrency : Currency
     {
         public Price<TCurrency> OneTime { get; }
@@ -13,7 +14,7 @@
             RegularDaily = regularDaily;
         }
         
-        public static readonly RentalFees<Euro> EuroRentalFees = 
+        public static readonly RentalFees<Euro> EuroRentalPrices = 
             new RentalFees<Euro>(Euro.CreatePrice(100), Euro.CreatePrice(60), Euro.CreatePrice(40));
     }
 }

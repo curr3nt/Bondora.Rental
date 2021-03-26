@@ -3,14 +3,14 @@
     interface EquipmentType
     {
         int LoyaltyPoints { get; }
-        Price<TCurrency> CalculateCost<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency;
+        Price<TCurrency> CalculatePrice<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency;
     }
 
     public class HeavyEquiment : EquipmentType
     {
         public int LoyaltyPoints => 2;
 
-        public Price<TCurrency> CalculateCost<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency
+        public Price<TCurrency> CalculatePrice<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency
         {
             return rentalFees.OneTime + rentalFees.PremiumDaily * rentalDays;
         }
@@ -20,7 +20,7 @@
     {
         public int LoyaltyPoints => 1;
 
-        public Price<TCurrency> CalculateCost<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency
+        public Price<TCurrency> CalculatePrice<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency
         {
             if (rentalDays <= 2)
                 return 
@@ -38,7 +38,7 @@
     {
         public int LoyaltyPoints => 1;
 
-        public Price<TCurrency> CalculateCost<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency
+        public Price<TCurrency> CalculatePrice<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency
         {
             if (rentalDays <= 3)
                 return rentalFees.PremiumDaily * rentalDays;
