@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bondora.Rental.Domain.Service
+namespace Bondora.Rental.Domain.Interface
 {
     public class EquipmentOrder
     {
@@ -18,9 +18,9 @@ namespace Bondora.Rental.Domain.Service
         private static readonly Dictionary<string, EquipmentType> EquipmentTypeIndex =
             new Dictionary<string, EquipmentType>
             {
-                { "regular", new RegularEquipment() },
-                { "heavy", new HeavyEquiment() },
-                { "specialized", new SpecializedEquipment() },
+                { "Regular", new RegularEquipment() },
+                { "Heavy", new HeavyEquiment() },
+                { "Specialized", new SpecializedEquipment() },
             };
 
         public static EquipmentType ParseEquipmentType(string equipmentType)
