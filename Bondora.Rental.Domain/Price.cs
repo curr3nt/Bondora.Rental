@@ -1,4 +1,7 @@
-﻿namespace Bondora.Rental.Domain
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Bondora.Rental.Domain
 {
     public class Price<TCurrency> where TCurrency : Currency
     {

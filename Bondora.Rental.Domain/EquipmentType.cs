@@ -1,6 +1,6 @@
 ﻿namespace Bondora.Rental.Domain
 {
-    interface EquipmentType
+    public interface EquipmentType
     {
         int LoyaltyPoints { get; }
         Price<TCurrency> CalculatePrice<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency;

@@ -13,8 +13,11 @@
             PremiumDaily = premiumDaily;
             RegularDaily = regularDaily;
         }
-        
-        public static readonly RentalFees<Euro> EuroRentalPrices = 
+    }
+
+    public class RentalFees
+    {
+        public static readonly RentalFees<Euro> EuroRentalPrices =
             new RentalFees<Euro>(Euro.CreatePrice(100), Euro.CreatePrice(60), Euro.CreatePrice(40));
     }
 }
