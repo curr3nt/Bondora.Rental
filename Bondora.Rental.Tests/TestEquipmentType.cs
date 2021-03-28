@@ -19,7 +19,7 @@ namespace Bondora.Rental.Tests
         [InlineData(100, 2, 3, 3, 106)]
         public void TestHeavyEquipment(int oneTime, int premiumDaily, int regularDaily, int days, int expected)
         {
-            var heavy = new HeavyEquiment();
+            var heavy = new HeavyEquipment();
             Assert.Equal(2, heavy.LoyaltyPoints);
 
             var prices = new RentalFees<DummyCurrency>(

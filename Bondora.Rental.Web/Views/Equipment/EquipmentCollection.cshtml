@@ -1,0 +1,33 @@
+﻿@using Bondora.Rental.Web.Equipment
+
+@* TODO: add spec *@
+@{ 
+    ViewBag.Title = "Available equipment";
+}
+@model EquipmentCollection
+
+<h1>Available equipment</h1>
+<p>
+    Here you can choose equipment you wish to order.
+    Before confirming your choice of an item, please specify amount of days you will be using this particular equipment.
+    After that, you should click "Add to cart". 
+    This confirms your selection and includes the item into your <em>virtual cart</em>. TODO: link it
+    Repeat the process until all items that you need are inside the cart.
+    TODO: when done.
+</p>
+<table style="border-collapse: separate; border-spacing: 5px 0;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Rental days</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var equipment in Model)
+        {
+            @await Html.PartialAsync("Equipment", equipment)
+        }
+    </tbody>
+</table>

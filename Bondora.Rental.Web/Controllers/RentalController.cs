@@ -14,7 +14,6 @@ namespace Bondora.Rental.Web.Controllers
 {
     public class RentalController : Controller
     {
-        // TODO: 
         private readonly AccessToInterface _accessToInterface;
 
         public RentalController()

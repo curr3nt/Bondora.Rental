@@ -19,7 +19,7 @@ namespace Bondora.Rental.Domain.Interface
             new Dictionary<string, EquipmentType>
             {
                 { "Regular", new RegularEquipment() },
-                { "Heavy", new HeavyEquiment() },
+                { "Heavy", new HeavyEquipment() },
                 { "Specialized", new SpecializedEquipment() },
             };
 

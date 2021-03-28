@@ -6,7 +6,7 @@
         Price<TCurrency> CalculatePrice<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency;
     }
 
-    public class HeavyEquiment : EquipmentType
+    public class HeavyEquipment : EquipmentType
     {
         public int LoyaltyPoints => 2;
 
