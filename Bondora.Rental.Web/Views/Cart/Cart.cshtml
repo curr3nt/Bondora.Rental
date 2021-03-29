@@ -18,14 +18,19 @@ else
 {
     <p>
         Here is the equipment you have chosen.
-        When ready, proceed with invoice generation by clicking "Invoice" link.
+        When ready, confirm your order by clicking "Confirm" link.
+        We will generate invoice with prices for all equipment, as well as some customer loyalty points.
+    </p>
+    <p style="display: flex; justify-content: space-between;">
+        <a href="/Cart/Confirm" style="">Confirm</a>
+        <a href="" id="clearCartLink">Clear cart</a>
     </p>
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Rental days</th>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Rental days</td>
             </tr>
         </thead>
         <tbody>
@@ -39,8 +44,6 @@ else
             }
         </tbody>
     </table>
-    <p><a href="/Cart/Invoice" style="margin-top: 10px;">Invoice</a></p>
-    <p><a href="" id="clearCart">Clear cart</a></p>
 }
 
 @section Scripts {
@@ -50,7 +53,7 @@ else
             document.cookie = "cart=" + encodeURI("[]") + ";path=/";
             location.reload(true);
         }
-        var clearCart = document.getElementById('clearCart');
-        if (clearCart) { clearCart.addEventListener('click', clearCart); }
+        var clearCartLink = document.getElementById('clearCartLink');
+        if (clearCartLink) { clearCartLink.addEventListener('click', clearCart); }
     </script>
 }

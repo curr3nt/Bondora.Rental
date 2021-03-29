@@ -42,7 +42,7 @@ namespace Bondora.Rental.Web.DomainInterface
             .Concat(new []
             {
                 "---",
-                "Loyalty points collected:\t" + _loyaltyPoints,
+                "Loyalty points collected\t" + _loyaltyPoints,
                 "Total price\t" + _price
             })
             .Aggregate((s1, s2) => s1 + Environment.NewLine + s2);

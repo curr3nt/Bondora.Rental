@@ -12,15 +12,15 @@
     Before confirming your choice of an item, please specify amount of days you will be using this particular equipment.
     After that, you should click "Add to cart". 
     This confirms your selection and includes the item into your <a href="/Cart/Index">virtual cart</a>.
-    Repeat the process until all items that you need are inside the cart.
+    Repeat the process until all items that you need are inside the cart, and then proceed to Cart.
 </p>
 <table style="border-collapse: separate; border-spacing: 5px 0;" id="equipmentCollection">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Rental days</th>
-            <th></th>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Rental days</td>
+            <td></td>
         </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
     </tbody>
 </table>
 <div id="addedToCartMessage" style="margin-top: 10px; visibility: hidden;">
-    "<span id="addedToCartItem"></span>" was added to cart
+    Added to cart item <span id="addedToCartItem"></span>
 </div>
 
 @section Scripts {
@@ -45,8 +45,8 @@
             return { Name: name, Days: days };
         }
 
-        function printMessage(item) {
-            var message = item.Name + ', ' + item.Days;
+        function printMessage(total, item) {
+            var message = '#' + total + ': "' + item.Name + ', ' + item.Days + '"';
             document.getElementById('addedToCartItem').innerHTML = message;
             document.getElementById('addedToCartMessage').style.visibility = 'visible';
         }
@@ -60,7 +60,7 @@
             // ASP.NET Core is unable to read cookies with JSON in them
             // therefore the following conversion occurs: json => string => html-encoded string
             document.cookie = "cart=" + encodeURIComponent(JSON.stringify(cart)) + ";path=/";
-            printMessage(item);
+            printMessage(cart.length, item);
         }
 
         function onAddToCartClick(event) {

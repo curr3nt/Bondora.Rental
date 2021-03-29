@@ -34,16 +34,23 @@ namespace Bondora.Rental.Web.Controllers
             return Cart.Validate(items, equipment);
         }
 
+        private static void ClearCart(HttpResponse response)
+        {
+            response.Cookies.Delete("cart");
+        }
+
         public IActionResult Index()
         {
             return View("Cart", ReadCart(Request, _equipment));
         }
 
-        public IActionResult Invoice()
+        public IActionResult Confirm()
         {
             var cart = ReadCart(Request, _equipment);
 
             var invoice = _accessToInterface.CalculateInvoice(cart);
+
+            ClearCart(Response);
 
             return File(Encoding.UTF8.GetBytes(invoice.ToFile()), "text/plain", "invoice.txt");
         }
