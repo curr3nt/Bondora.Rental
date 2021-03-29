@@ -1,0 +1,9 @@
+﻿@model WithSpec
+
+<nav id="mainNavigation">
+    <ul>
+        <li><a href="/Home/Index">@Model.Spec.GetLocalizedString("Home")</a></li>
+        <li><a href="/Equipment/Index">@Model.Spec.GetLocalizedString("Available equipment")</a></li>
+        <li><a href="/Cart/Index">@Model.Spec.GetLocalizedString("Cart")</a></li>
+    </ul>
+</nav>

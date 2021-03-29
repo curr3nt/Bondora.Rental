@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bondora.Rental.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bondora.Rental.Web.Controllers
 {
@@ -6,7 +7,7 @@ namespace Bondora.Rental.Web.Controllers
     {
         public IActionResult Index()
         {
-            return View("Index");
+            return View("Index", new Home(new EnglishDictionary()));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Bondora.Rental.Web.Equipment;
+﻿using Bondora.Rental.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bondora.Rental.Web.Controllers
@@ -7,8 +7,8 @@ namespace Bondora.Rental.Web.Controllers
     {
         public IActionResult Index()
         {
-            var equipmentCollection = EquipmentCollection.FromSampleFile();
-            return View("EquipmentCollection", equipmentCollection);
+            var equipment = EquipmentCollection.FromSampleFile(new EnglishDictionary());
+            return View("EquipmentCollection", equipment);
         }
     }
 }

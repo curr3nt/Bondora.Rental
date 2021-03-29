@@ -1,4 +1,4 @@
-﻿namespace Bondora.Rental.Web.Equipment
+﻿namespace Bondora.Rental.Web.Models
 {
     public class Equipment
     {

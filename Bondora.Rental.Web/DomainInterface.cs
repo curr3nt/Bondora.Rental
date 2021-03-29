@@ -4,12 +4,12 @@ using Bondora.Rental.Web.Models;
 
 namespace Bondora.Rental.Web.DomainInterface
 {
-    public class AccessToInterface
+    public class DomainInterface
     {
         // TODO: replace explicit service reference
         private readonly Domain.Interface.Service _service;
 
-        public AccessToInterface()
+        public DomainInterface()
         {
             _service = new Domain.Interface.Service();
         }

@@ -1,36 +1,27 @@
 ﻿@using Bondora.Rental.Web.Models
 
-@* TODO: add spec *@
-
-@{ ViewBag.Title = "Cart"; }
+@{ ViewBag.Title = Model.Spec.GetLocalizedString("Cart"); }
 
 @model Cart
 
-<h1>Cart</h1>
+<h1>@Model.Spec.GetLocalizedString("Cart")</h1>
 @if (Model.Count() == 0)
 {
-    <p>
-        Your cart is empty.
-        Fill it up by browsing our <a href="/Equipment/Index">construction equipment</a>.
-    </p>
+    @Html.Raw(Model.Spec.GetLocalizedString("empty cart"))
 }
 else
 {
-    <p>
-        Here is the equipment you have chosen.
-        When ready, confirm your order by clicking "Confirm" link.
-        We will generate invoice with prices for all equipment, as well as some customer loyalty points.
-    </p>
+    @Html.Raw(Model.Spec.GetLocalizedString("full cart"))
     <p style="display: flex; justify-content: space-between;">
-        <a href="/Cart/Confirm" style="">Confirm</a>
-        <a href="" id="clearCartLink">Clear cart</a>
+        <a href="/Cart/Confirm">@Model.Spec.GetLocalizedString("confirm cart")</a>
+        <a href="" id="clearCartLink">@Model.Spec.GetLocalizedString("Clear cart")</a>
     </p>
     <table>
         <thead>
             <tr>
-                <td>Name</td>
-                <td>Type</td>
-                <td>Rental days</td>
+                <td>@Model.Spec.GetLocalizedString("Name")</td>
+                <td>@Model.Spec.GetLocalizedString("Type")</td>
+                <td>@Model.Spec.GetLocalizedString("Rental days")</td>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +37,8 @@ else
     </table>
 }
 
-@section Scripts {
+@section Scripts 
+{
     <script type="text/javascript">
         function clearCart(event) {
             event.preventDefault();

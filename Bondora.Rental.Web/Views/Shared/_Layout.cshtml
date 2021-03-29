@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewData["Title"] - Bondora.Rental</title>
+    <title>@ViewData["Title"]</title>
     <style type="text/css">
         html, body {
             height: 100%;
@@ -55,14 +55,7 @@
         @RenderBody()
     </main>
     <footer id="mainFooter">
-        @* TODO: move to separate view *@
-        <nav id="mainNavigation">
-            <ul>
-                <li><a href="/Home/Index">Home</a></li>
-                <li><a href="/Equipment/Index">Available equipment</a></li>
-                <li><a href="/Cart/Index">Cart</a></li>
-            </ul>
-        </nav>
+        @await Html.PartialAsync("MainNavigation", (WithSpec) Model)
     </footer>
     @RenderSection("Scripts", required: false)
 </body>

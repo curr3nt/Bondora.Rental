@@ -1,5 +1,4 @@
-﻿using Bondora.Rental.Web.Equipment;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,28 +33,33 @@ namespace Bondora.Rental.Web.Models
         }
     }
 
-    public class Cart : IEnumerable<CartFullItem>
+    public class Cart : IEnumerable<CartFullItem>, WithSpec
     {
         private readonly IEnumerable<CartFullItem> _items;
 
-        public Cart(IEnumerable<CartFullItem> items)
+        public IEnumerator<CartFullItem> GetEnumerator() => _items.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public ModelSpec Spec { get; }
+
+        public Cart(IEnumerable<CartFullItem> items, ModelSpec spec)
         {
             _items = items;
+            Spec = spec;
         }
 
         public static Cart Validate(IEnumerable<CartCompactItem> compactItems,
-            EquipmentCollection equipment)
+            EquipmentCollection equipment,
+            ModelSpec spec)
         {
             var equipmentTypeIndex = equipment.ToDictionary(e => e.Name, e => e.Type);
-            return new Cart(compactItems
-                .Select(i => CartFullItem.Restore(i, equipmentTypeIndex))
-                // this filters out only properly restored items
-                // please check comment above
-                .Where(item => item != null)
-                .ToList());
+            return new Cart(
+                compactItems
+                    .Select(i => CartFullItem.Restore(i, equipmentTypeIndex))
+                    // this filters out only properly restored items
+                    // please check comment above
+                    .Where(item => item != null)
+                    .ToList(), spec);
         }
-
-        public IEnumerator<CartFullItem> GetEnumerator() => _items.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

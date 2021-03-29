@@ -1,25 +1,17 @@
-﻿@using Bondora.Rental.Web.Equipment
+﻿@using Bondora.Rental.Web.Models
 
-@* TODO: add spec *@
 @{ 
-    ViewBag.Title = "Available equipment";
+    ViewBag.Title = Model.Spec.GetLocalizedString("Available equipment"); 
 }
 @model EquipmentCollection
 
-<h1>Available equipment</h1>
-<p>
-    Here you can choose equipment you wish to order.
-    Before confirming your choice of an item, please specify amount of days you will be using this particular equipment.
-    After that, you should click "Add to cart". 
-    This confirms your selection and includes the item into your <a href="/Cart/Index">virtual cart</a>.
-    Repeat the process until all items that you need are inside the cart, and then proceed to Cart.
-</p>
+@Html.Raw(Model.Spec.GetLocalizedString("available equipment description"))
 <table style="border-collapse: separate; border-spacing: 5px 0;" id="equipmentCollection">
     <thead>
         <tr>
-            <td>Name</td>
-            <td>Type</td>
-            <td>Rental days</td>
+            <td>@Model.Spec.GetLocalizedString("Name")</td>
+            <td>@Model.Spec.GetLocalizedString("Type")</td>
+            <td>@Model.Spec.GetLocalizedString("Rental days")</td>
             <td></td>
         </tr>
     </thead>
@@ -30,16 +22,17 @@
                 <td class="equipment-name">@equipment.Name</td>
                 <td>@equipment.Type</td>
                 <td><input class="rental-days" type="number" /></td>
-                <td><input class="add-to-cart" type="button" value="Add to cart" /></td>
+                <td><input class="add-to-cart" type="button" value="@Model.Spec.GetLocalizedString("Add to cart")" /></td>
             </tr>
         }
     </tbody>
 </table>
 <div id="addedToCartMessage" style="margin-top: 10px; visibility: hidden;">
-    Added to cart item <span id="addedToCartItem"></span>
+    @Model.Spec.GetLocalizedString("added to cart") <span id="addedToCartItem"></span>
 </div>
 
-@section Scripts {
+@section Scripts 
+{
     <script type="text/javascript">
         function createCartItem(name, days) {
             return { Name: name, Days: days };
