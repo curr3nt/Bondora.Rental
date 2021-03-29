@@ -11,11 +11,10 @@
     Here you can choose equipment you wish to order.
     Before confirming your choice of an item, please specify amount of days you will be using this particular equipment.
     After that, you should click "Add to cart". 
-    This confirms your selection and includes the item into your <em>virtual cart</em>. TODO: link it
+    This confirms your selection and includes the item into your <a href="/Cart/Index">virtual cart</a>.
     Repeat the process until all items that you need are inside the cart.
-    TODO: when done.
 </p>
-<table style="border-collapse: separate; border-spacing: 5px 0;">
+<table style="border-collapse: separate; border-spacing: 5px 0;" id="equipmentCollection">
     <thead>
         <tr>
             <th>Name</th>
@@ -27,7 +26,52 @@
     <tbody>
         @foreach (var equipment in Model)
         {
-            @await Html.PartialAsync("Equipment", equipment)
+            <tr>
+                <td class="equipment-name">@equipment.Name</td>
+                <td>@equipment.Type</td>
+                <td><input class="rental-days" type="number" /></td>
+                <td><input class="add-to-cart" type="button" value="Add to cart" /></td>
+            </tr>
         }
     </tbody>
 </table>
+<div id="addedToCartMessage" style="margin-top: 10px; visibility: hidden;">
+    "<span id="addedToCartItem"></span>" was added to cart
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        function createCartItem(name, days) {
+            return { Name: name, Days: days };
+        }
+
+        function printMessage(item) {
+            var message = item.Name + ', ' + item.Days;
+            document.getElementById('addedToCartItem').innerHTML = message;
+            document.getElementById('addedToCartMessage').style.visibility = 'visible';
+        }
+
+        function addToCart(name, days) {
+            // code was stolen from https://developer.mozilla.org/en-US/docs/Web/API/document/cookie
+            var cartCookie = document.cookie.split('; ').find(row => row.startsWith('cart='));
+            var cart = cartCookie ? JSON.parse(decodeURIComponent(cartCookie.split('=')[1])) : [];
+            var item = createCartItem(name, days);
+            cart.push(item);
+            // ASP.NET Core is unable to read cookies with JSON in them
+            // therefore the following conversion occurs: json => string => html-encoded string
+            document.cookie = "cart=" + encodeURIComponent(JSON.stringify(cart)) + ";path=/";
+            printMessage(item);
+        }
+
+        function onAddToCartClick(event) {
+            if (event.target.className !== 'add-to-cart') return;
+
+            var row = event.target.closest('tr');
+            var name = row.getElementsByClassName('equipment-name')[0].innerText;
+            var days = row.getElementsByClassName('rental-days')[0].value;
+            addToCart(name, days);
+        }
+
+        document.getElementById('equipmentCollection').addEventListener('click', onAddToCartClick);
+    </script>
+}

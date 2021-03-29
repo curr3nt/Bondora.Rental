@@ -1,8 +1,8 @@
 ﻿namespace Bondora.Rental.Web.Models
 {
-    public class EquipmentOrder
+    public class CartCompactItem
     {
         public string Name { get; set; }
-        public int RentalDays { get; set; }
+        public string Days { get; set; }
     }
 }
