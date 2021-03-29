@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
+    <PackageReference Include="NServiceBus" Version="7.4.4" />
+    <PackageReference Include="NServiceBus.Callbacks" Version="3.0.0" />
+    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bondora.Rental.Domain.Interface\Bondora.Rental.Domain.Interface.csproj" />
     <ProjectReference Include="..\Bondora.Rental.Domain\Bondora.Rental.Domain.csproj" />
   </ItemGroup>
 

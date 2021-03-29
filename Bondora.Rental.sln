@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bondora.Rental.Domain", "Bo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bondora.Rental.Tests", "Bondora.Rental.Tests\Bondora.Rental.Tests.csproj", "{FF147418-F52B-4C21-84FB-1C8A364949DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bondora.Rental.Web", "Bondora.Rental.Web\Bondora.Rental.Web.csproj", "{94DAC6A1-EB71-41E9-9E5E-12EED1F1FBB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bondora.Rental.Web", "Bondora.Rental.Web\Bondora.Rental.Web.csproj", "{94DAC6A1-EB71-41E9-9E5E-12EED1F1FBB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bondora.Rental.Domain.Interface", "Bondora.Rental.Domain.Interface\Bondora.Rental.Domain.Interface.csproj", "{129BC81F-14DF-4FCA-AB5B-128A7D86F066}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{94DAC6A1-EB71-41E9-9E5E-12EED1F1FBB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94DAC6A1-EB71-41E9-9E5E-12EED1F1FBB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94DAC6A1-EB71-41E9-9E5E-12EED1F1FBB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{129BC81F-14DF-4FCA-AB5B-128A7D86F066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129BC81F-14DF-4FCA-AB5B-128A7D86F066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129BC81F-14DF-4FCA-AB5B-128A7D86F066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129BC81F-14DF-4FCA-AB5B-128A7D86F066}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

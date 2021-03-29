@@ -1,12 +1,15 @@
-﻿using System;
+﻿using NServiceBus;
+using System;
 using System.Collections.Generic;
 
 namespace Bondora.Rental.Domain.Interface
 {
     public class EquipmentOrder
     {
-        public readonly string Type;
-        public readonly int RentalDays;
+        public string Type { get; set; }
+        public int RentalDays { get; set; }
+
+        public EquipmentOrder() { }
 
         public EquipmentOrder(string type, int days)
         {
@@ -36,5 +39,10 @@ namespace Bondora.Rental.Domain.Interface
 
         public int CalculateLoyaltyPoints() => 
             ParseEquipmentType(Type).LoyaltyPoints;
+    }
+
+    public class Order : IMessage
+    {
+        public List<EquipmentOrder> Equipment { get; set; } 
     }
 }

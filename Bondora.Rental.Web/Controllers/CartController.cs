@@ -1,22 +1,23 @@
 ﻿using Bondora.Rental.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NServiceBus;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Text.Json;
 
 namespace Bondora.Rental.Web.Controllers
 {
     public class CartController : Controller
     {
-        private readonly DomainInterface.DomainInterface _accessToInterface;
+        private readonly DomainInterface _domainInterface;
         private readonly EquipmentCollection _equipment;
         private readonly ModelSpec _modelSpec;
         private readonly InvoiceSpec _invoiceSpec;
 
-        public CartController()
+        public CartController(IMessageSession _messageSession)
         {
-            _accessToInterface = new DomainInterface.DomainInterface();
+            _domainInterface = new DomainInterface(_messageSession);
             _modelSpec = new EnglishDictionary();
             _equipment = EquipmentCollection.FromSampleFile(_modelSpec);
             _invoiceSpec = new EnglishInvoice();
@@ -28,7 +29,7 @@ namespace Bondora.Rental.Web.Controllers
             List<CartCompactItem> items = new List<CartCompactItem>();
             var cartCookie = request.Cookies["cart"];
             if (!string.IsNullOrWhiteSpace(cartCookie))
-                items = JsonSerializer.Deserialize<List<CartCompactItem>>(cartCookie);
+                items = System.Text.Json.JsonSerializer.Deserialize<List<CartCompactItem>>(cartCookie);
             return Cart.Validate(items, equipment, spec);
         }
 
@@ -45,8 +46,10 @@ namespace Bondora.Rental.Web.Controllers
         public IActionResult Confirm()
         {
             var cart = ReadCart(Request, _equipment, _modelSpec);
+            var items = cart.ToList();
+            var message = items.Select(item => new Domain.Interface.EquipmentOrder(item.Type, item.RentalDays));
 
-            var invoice = _accessToInterface.CalculateInvoice(cart);
+            var invoice = _domainInterface.CalculateInvoice(cart);
 
             ClearCart(Response);
 

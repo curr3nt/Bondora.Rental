@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using NServiceBus;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Bondora.Rental.Domain.Interface
 {
-    public class Invoice
+    public class Invoice : IMessage
     {
-        public readonly string Price;
-        public readonly int LoyaltyPoints;
-        public readonly List<string> Lines;
+        public string Price { get; set; }
+        public int LoyaltyPoints { get; set; }
+        public List<string> Lines { get; set; }
+
+        public Invoice() { }
 
         public Invoice(string price, int points, List<string> equipment)
         {
