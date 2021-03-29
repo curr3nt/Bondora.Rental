@@ -2,6 +2,7 @@
 {
     public interface EquipmentType
     {
+        // its better to encapsulate loyalty points logic in a dedicated type
         int LoyaltyPoints { get; }
         Price<TCurrency> CalculatePrice<TCurrency>(RentalFees<TCurrency> rentalFees, int rentalDays) where TCurrency : Currency;
     }

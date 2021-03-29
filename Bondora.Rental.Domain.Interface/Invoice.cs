@@ -27,6 +27,7 @@ namespace Bondora.Rental.Domain.Interface
             {
                 var price = orderLine.CalculatePrice(fees);
                 total = total.Add(price);
+                // TODO: this logic is a part of "LoyaltyPoints" type
                 loyaltyPoints += orderLine.CalculateLoyaltyPoints();
                 return price.Print();
             }).ToList();

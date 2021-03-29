@@ -23,13 +23,16 @@ namespace Bondora.Rental.Web
                     .Select(item => new Domain.Interface.EquipmentOrder(item.Type, item.RentalDays))
                     .ToList()
             };
-            // expected that invoice keeps equipment in the same order
             var sendOptions = new SendOptions();
             sendOptions.SetDestination("Bondora.Rental.Domain.Interface");
+            // since now message queue is used, it might be a good idea to "mark" all messages with some unique ID
+            // currently I have no confidence how messages from several running web instances will be handled, 
+            //   and if NServiceBus does this automatically
             var reply = _messageSession
                 .Request<Domain.Interface.Invoice>(order, sendOptions)
                 .GetAwaiter()
                 .GetResult();
+            // expected that invoice keeps equipment in the same order
             // following code will fail if ordering is broken
             var invoiceLines = new List<InvoiceLine>();
             for (var index = 0; index < items.Count; index++)

@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Bondora.Rental.Domain
+﻿namespace Bondora.Rental.Domain
 {
     public class Price<TCurrency> where TCurrency : Currency
     {
+        // integer might not be the best representation of "money"
         public int Value { get; }
         public TCurrency Currency { get; }
 
